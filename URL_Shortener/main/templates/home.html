@@ -1,0 +1,24 @@
+<form method="POST" action="{% url 'make_new' %}">
+     {% csrf_token %}
+    <div class="row">
+      <div class="col">
+        <input type="text" class="form-control" id="url" placeholder="url" name="url">
+      </div>
+    </div>
+
+    {{ form.as_p }}
+    <button type="submit" name="button">Save</button>
+</form>
+<br>
+
+    <li><a href="http://localhost:8000/{{ newest_url.short_url }}"> "{{newest_url.short_url}}"</a></li>
+
+<h1>Previosly added URLS: </h1>
+{% for url in short_urls %}
+
+    <li><a href="http://localhost:8000/{{ url.short_url }}"> "{{ url.short_url }}"</a></li>
+
+{% empty %}
+    <p>no urls added</p>
+
+{% endfor %}
